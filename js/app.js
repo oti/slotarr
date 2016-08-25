@@ -3,6 +3,7 @@
 
   var model = {
     elems: {
+      amount: d.querySelector('#amount'),
       text: d.querySelector('#text'),
       panel: d.querySelector('#panel'),
       apply: d.querySelector("#apply")
@@ -18,6 +19,11 @@
     return Math.floor(Math.random() * length);
   };
 
+  // 選択肢数＝スロット数にするかどうか
+  var get_amount_flag = function(){
+    return model.elems.amount.checked;
+  };
+
   // 取得した文字列を配列にして返す
   var set_target_array = function(value){
     model.original_arr = model.elems.text.value.split(' ');
@@ -27,8 +33,8 @@
   // 元の配列をシャッフルした配列を作る
   var set_shuffle_arr = function(){
     var m_arr = model.original_arr;
-    var s_cnt = model.shuffle_cnt;
     var length = model.length;
+    var s_cnt = get_amount_flag() ? length : model.shuffle_cnt;
     var s_arr = model.shuffle_arr;
     var idx = get_shuffle_idx;
 

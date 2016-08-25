@@ -18,6 +18,11 @@ p {
   padding: 15px 10px;
 }
 
+#amountLabel {
+  margin-left: 8px;
+  line-height: 1.5;
+}
+
 #text {
   border: 1px solid #666;
   width: 100%;
