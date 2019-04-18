@@ -1,0 +1,25 @@
+{
+  "name": "slotarr",
+  "version": "2.0.0",
+  "description": "好きな文字列でスロット！揃ったらラッキー！",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "sass": "^1.18.0",
+    "typescript": "^3.4.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oti/slotarr.git"
+  },
+  "author": "oti (https://twitter.com/otiext)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oti/slotarr/issues"
+  },
+  "homepage": "https://github.com/oti/slotarr#readme"
+}
