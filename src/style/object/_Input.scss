@@ -23,11 +23,33 @@
       box-shadow: inset 2px 2px 4px 0 rgba(c(base), 0.125);
     }
 
-    .Input__button {
+    .Input__action {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       margin-top: 1rem;
+    }
+
+    .Input__button {
+      & + & {
+        margin-left: 1rem;
+      }
+      @extend %reset-Button;
+      flex: 1 1 auto;
+      padding: 0.5rem 0.25rem;
+      border: 1px solid c(main);
+      border-radius: 0.125rem;
+      color: #fff;
+      line-height: 1;
+      background-color: rgba(c(main), 0.75);
+      width: 100%;
+      &:active {
+        transform: translateY(2px);
+      }
+
+      &.-juuRen {
+        background-color: c(main);
+      }
     }
   }
 }

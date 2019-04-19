@@ -17,7 +17,7 @@ html(lang='ja')
       article.Main__inner
         header.Main__section
           h2.Main__copy 半角スペース区切りの好きな単語でスロット！
-          p.Main__description ランチが決まらない……そんな時はSlotarrにお任せ。半角スペース区切りで項目を入れて「スロット」ボタンをタップ！　揃ったお店で美味しく食べよう！　何択でもOKです！
+          p.Main__description ランチが決まらない……そんな時はSlotarrにお任せ。半角スペース区切りで項目を入れて「ガチャる」ボタンをタップ！　揃ったお店で美味しく食べよう！　何択でもOKです！
         
         .Border
 
@@ -30,8 +30,9 @@ html(lang='ja')
               input.Amount__checkbox#amount(type='checkbox')
               span.Amount__text 項目の数と同じスロット数にする（デフォルトは3つ）
 
-            .Input__button
-              button.Execute#execute(type='button') スロット！
+            .Input__action
+              button.Input__button#execute(type='button') ガチャる
+              button.Input__button.-juuRen#juuRen(type='button') 10連でガチャる
 
         .Border
 
