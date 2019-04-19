@@ -5,7 +5,6 @@
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
-    "materialize-css": "^1.0.0-rc.2",
     "parcel": "^1.12.3",
     "sass": "^1.18.0",
     "typescript": "^3.4.3"
