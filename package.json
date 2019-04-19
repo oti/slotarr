@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "npx parcel src/index.pug --open",
-    "build": "npx parcel build src/index.pug --no-source-maps -d docs"
+    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps -d docs"
   },
   "repository": {
     "type": "git",
