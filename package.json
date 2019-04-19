@@ -6,6 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "parcel": "^1.12.3",
+    "pug": "^2.0.3",
     "sass": "^1.18.0",
     "typescript": "^3.4.3"
   },

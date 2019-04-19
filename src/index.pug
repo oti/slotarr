@@ -1,0 +1,46 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='UTF-8')
+    title Slotarr - 半角スペース区切りの好きな単語でスロット！揃ったらラッキー！
+    meta(content='width=device-width', name='viewport')
+    link(rel='stylesheet', href='style/index.scss')
+    script(src='script/index.ts')
+
+  body
+    header.Header(role='banner')
+      .Header__inner
+        h1.Header__title Slotarr
+
+    main.Main(role='main')
+      article.Main__inner
+        header.Main__section
+          h2.Main__copy 半角スペース区切りの好きな単語でスロット！
+          p.Main__description ランチが決まらない……そんな時はSlotarrにお任せ。半角スペース区切りで項目を入れて「スロット」ボタンをタップ！　揃ったお店で美味しく食べよう！　何択でもOKです！
+        
+        .Border
+
+        section.Main__section
+          .Input
+            h3.Input__heading 項目を入力
+            textarea.Input__textarea#text 中本 和食 イタリアン
+
+            label.Amount
+              input.Amount__checkbox#amount(type='checkbox')
+              span.Amount__text 項目の数と同じスロット数にする（デフォルトは3つ）
+
+            .Input__button
+              button.Execute#apply(type='button') スロット！
+
+        .Border
+
+        section.Main__section
+          .Output
+            h3.Output__heading スロット結果
+            .Output__panel#panel 中本 / 中本 / 中本
+            p.Output__note 意外と揃わないので2/3で同じの出たらラッキーくらいに思うようにすると良いです。揃わなくてもテーブルを叩かないこと。
+
+    footer.Footer(role='contentinfo')
+      .Footer__inner
+        p.Footer__credit このウェブアプリは#[a(href='https://twitter.com/otiext', target='_blank', rel='noopener') 越智が作りました。]
+        p.Footer__license licensed by CC0.
