@@ -1,15 +1,15 @@
 export default class Slotarr {
-  $amountToggler: HTMLInputElement
-  $seedText: HTMLTextAreaElement
-  $resultArea: HTMLDivElement
+  $amount: HTMLInputElement
+  $input: HTMLTextAreaElement
+  $output: HTMLDivElement
   $execute: HTMLButtonElement
   defaultSlotAmount: number
 
   constructor() {
-    this.$amountToggler = document.querySelector('#amount') as HTMLInputElement
-    this.$seedText = document.querySelector('#text') as HTMLTextAreaElement
-    this.$resultArea = document.querySelector('#panel') as HTMLDivElement
-    this.$execute = document.querySelector('#apply') as HTMLButtonElement
+    this.$amount = document.querySelector('#amount') as HTMLInputElement
+    this.$input = document.querySelector('#input') as HTMLTextAreaElement
+    this.$output = document.querySelector('#output') as HTMLDivElement
+    this.$execute = document.querySelector('#execute') as HTMLButtonElement
     this.defaultSlotAmount = 3
   }
 
@@ -18,11 +18,11 @@ export default class Slotarr {
   }
 
   get isSameAmountOfItemToSlot() {
-    return this.$amountToggler.checked
+    return this.$amount.checked
   }
 
   get seedArray() {
-    return this.$seedText.value.split(' ')
+    return this.$input.value.split(' ')
   }
 
   get slotAmount() {
@@ -40,7 +40,7 @@ export default class Slotarr {
   }
 
   setResult(array: string[]) {
-    this.$resultArea.textContent = array.join(' / ')
+    this.$output.textContent = array.join(' / ')
   }
 
   dispatch() {

@@ -24,21 +24,21 @@ html(lang='ja')
         section.Main__section
           .Input
             h3.Input__heading 項目を入力
-            textarea.Input__textarea#text 中本 和食 イタリアン
+            textarea.Input__textarea#input 中本 和食 イタリアン
 
             label.Amount
               input.Amount__checkbox#amount(type='checkbox')
               span.Amount__text 項目の数と同じスロット数にする（デフォルトは3つ）
 
             .Input__button
-              button.Execute#apply(type='button') スロット！
+              button.Execute#execute(type='button') スロット！
 
         .Border
 
         section.Main__section
           .Output
             h3.Output__heading スロット結果
-            .Output__panel#panel 中本 / 中本 / 中本
+            .Output__panel#output 中本 / 中本 / 中本
             p.Output__note 意外と揃わないので2/3で同じの出たらラッキーくらいに思うようにすると良いです。揃わなくてもテーブルを叩かないこと。
 
     footer.Footer(role='contentinfo')
