@@ -1,6 +1,6 @@
 {
   "name": "slotarr",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
   "main": "index.html",
   "dependencies": {},
@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "npx parcel src/index.pug --open",
-    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps -d docs"
+    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps --public-url ./ -d docs"
   },
   "repository": {
     "type": "git",
