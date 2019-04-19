@@ -1,0 +1,17 @@
+.Execute {
+  @at-root {
+    & {
+      @extend %reset-Button;
+      padding: 0.5rem 0.25rem;
+      border: 1px solid c(main);
+      border-radius: 0.125rem;
+      color: #fff;
+      line-height: 1;
+      background-color: rgba(c(main), 0.75);
+      width: 100%;
+      &:active {
+        transform: translateY(2px);
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.Header {
+  @at-root {
+    & {
+      background-color: c(main);
+      box-shadow: 0 0 15px 0 rgba(c(main), 0.5)
+    }
+    
+    .Header__inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+    }
+    
+    .Header__title {
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+  }
+}
