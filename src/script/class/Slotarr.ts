@@ -5,6 +5,8 @@ export default class Slotarr {
   $execute: HTMLButtonElement
   $juuRen: HTMLButtonElement
   defaultSlotAmount: number
+  splitString: string
+  joinString: string
 
   constructor() {
     this.$amount = document.querySelector('#amount') as HTMLInputElement
@@ -13,6 +15,8 @@ export default class Slotarr {
     this.$execute = document.querySelector('#execute') as HTMLButtonElement
     this.$juuRen = document.querySelector('#juuRen') as HTMLButtonElement
     this.defaultSlotAmount = 3
+    this.splitString = ' '
+    this.joinString = ' - '
   }
 
   get idx() {
@@ -24,7 +28,7 @@ export default class Slotarr {
   }
 
   get seedArray() {
-    return this.$input.value.split(' ')
+    return this.$input.value.split(this.splitString)
   }
 
   get slotAmount() {
@@ -65,14 +69,14 @@ export default class Slotarr {
   }
 
   setResult(result: string[]) {
-    this.$output.textContent = result.join(' / ')
+    this.$output.textContent = result.join(this.joinString)
   }
 
   setJuuRenResult(result: string[][]) {
     this.$output.textContent = ''
     result.forEach((one: string[], i: number, arr: string[][]) => {
       let $p: HTMLParagraphElement = document.createElement('p')
-      $p.textContent = i+1 + ': ' + one.join(' / ')
+      $p.textContent = String(i+1).padStart(2, '0') + ': ' + one.join(this.joinString)
 
       if (this.isEqual(one)) {
         $p.classList.add('u-equal')
