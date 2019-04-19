@@ -1,0 +1,27 @@
+{
+  "name": "slotarr",
+  "version": "2.0.0",
+  "description": "好きな文字列でスロット！揃ったらラッキー！",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.3",
+    "pug": "^2.0.3",
+    "sass": "^1.18.0",
+    "typescript": "^3.4.3"
+  },
+  "scripts": {
+    "start": "npx parcel src/index.pug --open",
+    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oti/slotarr.git"
+  },
+  "author": "oti (https://twitter.com/otiext)",
+  "license": "CC0",
+  "bugs": {
+    "url": "https://github.com/oti/slotarr/issues"
+  },
+  "homepage": "https://github.com/oti/slotarr#readme"
+}

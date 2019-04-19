@@ -1,0 +1,26 @@
+@charset 'UTF-8';
+
+// scssコンパイル用メタファイル
+@import 'config/var';
+@import 'config/placeholder';
+@import 'config/mixin';
+@import 'config/function';
+
+// ファンデーション
+@import 'foundation/font';
+@import 'foundation/reset';
+@import 'foundation/base';
+@import 'foundation/what-input';
+
+// オブジェクト
+@import 'object/Header';
+@import 'object/Main';
+@import 'object/Border';
+@import 'object/Input';
+@import 'object/Amount';
+@import 'object/Output';
+@import 'object/Footer';
+
+// ユーティリティー
+@import 'utility/visibilityHidden';
+@import 'utility/equal';

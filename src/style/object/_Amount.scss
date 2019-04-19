@@ -1,0 +1,20 @@
+.Amount {
+  @at-root {
+    & {
+      display: flex;
+      align-items: baseline;
+      margin-top: 0.5rem;
+    }
+    
+    .Amount__checkbox {
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+    
+    .Amount__text {
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+  }
+}
