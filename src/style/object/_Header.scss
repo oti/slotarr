@@ -17,5 +17,13 @@
       font-size: 1.5rem;
       line-height: 1;
     }
+
+    .Header__logo {
+      line-height: 1;
+      vertical-align: top;
+      path {
+        fill: #fff;
+      }
+    }
   }
 }
