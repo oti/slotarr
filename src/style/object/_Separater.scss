@@ -1,0 +1,27 @@
+.Separator {
+  @at-root {
+    & {
+      display: flex;
+      align-items: baseline;
+      margin-top: 0.5rem;
+    }
+
+    .Separator__label {
+      font-size: 0.875rem;
+      // &:first-child
+      & + & {
+        margin-left: 1rem;
+      }
+    }
+
+    .Separator__radio {
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+    .Separator__text {
+      margin-left: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+  }
+}

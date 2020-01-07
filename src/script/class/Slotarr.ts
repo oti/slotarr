@@ -1,5 +1,11 @@
+const dict = {
+  split_string: [',', ' '],
+  join_string: '＿'
+}
+
 export default class Slotarr {
   $amount: HTMLInputElement
+  $separaters: NodeListOf<HTMLInputElement>
   $input: HTMLTextAreaElement
   $output: HTMLDivElement
   $execute: HTMLButtonElement
@@ -10,13 +16,14 @@ export default class Slotarr {
 
   constructor() {
     this.$amount = document.querySelector('#amount') as HTMLInputElement
+    this.$separaters = document.querySelectorAll('[name="separater"]') as NodeListOf<HTMLInputElement>
     this.$input = document.querySelector('#input') as HTMLTextAreaElement
     this.$output = document.querySelector('#output') as HTMLDivElement
     this.$execute = document.querySelector('#execute') as HTMLButtonElement
     this.$juuRen = document.querySelector('#juuRen') as HTMLButtonElement
     this.defaultSlotAmount = 3
-    this.splitString = ' '
-    this.joinString = ' - '
+    this.splitString = dict.split_string[0]
+    this.joinString = dict.join_string
   }
 
   /**
@@ -27,10 +34,25 @@ export default class Slotarr {
   }
 
   /**
+   * @get 区切り文字を返す
+   */
+  get separater() {
+    let value: number = 0
+    this.$separaters.forEach((elem: HTMLInputElement, i: number) => {
+      if (elem.checked) {
+        value = parseInt(elem.value, 10)
+        return
+      }
+    })
+    return value
+  }
+
+  /**
    * スロットの数を返す
    */
   get slotAmount() {
-    return this.isSameAmountOfItemToSlot ? this.seedArray.length : this.defaultSlotAmount
+    // return this.isSameAmountOfItemToSlot ? this.seedArray.length : this.defaultSlotAmount
+    return this.seedArray.length
   }
 
   /**
@@ -44,7 +66,7 @@ export default class Slotarr {
    * $inputのテキストから元となる配列を返す
    */
   get seedArray() {
-    return this.$input.value.split(this.splitString)
+    return this.$input.value.split(dict.split_string[this.separater])
   }
 
   /**
@@ -65,7 +87,7 @@ export default class Slotarr {
    */
   get shuffled10Array() {
     let array10: string[][] = []
-    
+
     for (let i=0; i<10; i++) {
       let array1: string[] = []
       for (let i=0; i<this.slotAmount; i++) {
@@ -116,7 +138,6 @@ export default class Slotarr {
    * イベントのバインド
    */
   dispatch() {
-
     this.$execute.addEventListener('click', (ev: Event) => {
       this.setResult(this.shuffledArray)
     })
