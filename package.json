@@ -1,14 +1,14 @@
 {
   "name": "slotarr",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
   "main": "index.html",
   "dependencies": {},
   "devDependencies": {
-    "parcel-bundler": "^1.12.3",
-    "pug": "^2.0.3",
-    "sass": "^1.18.0",
-    "typescript": "^3.4.3"
+    "parcel-bundler": "^1.12.4",
+    "pug": "^2.0.4",
+    "sass": "^1.24.2",
+    "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "npx parcel src/index.pug --open",
