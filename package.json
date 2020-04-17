@@ -12,8 +12,8 @@
     "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "npx parcel src/index.pug --open",
-    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps --public-url ./ -d docs"
+    "start": "parcel src/index.pug --open --out-dir .cache",
+    "build": "parcel build src/index.pug --no-source-maps --public-url ./"
   },
   "repository": {
     "type": "git",
