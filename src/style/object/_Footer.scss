@@ -3,7 +3,7 @@
     & {
       background-color: rgba(c(main), 0.05);
     }
-    
+
     .Footer__inner {
       display: flex;
       justify-content: space-between;
@@ -12,13 +12,14 @@
       margin-left: auto;
       padding: 0.5rem 1rem;
       max-width: 768px;
+      font-style: normal;
     }
-    
+
     .Footer__credit {
       font-size: 0.75rem;
       line-height: 1.2;
     }
-    
+
     .Footer__license {
       font-size: 0.75rem;
       line-height: 1.2;

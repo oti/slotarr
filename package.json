@@ -1,18 +1,28 @@
 {
   "name": "slotarr",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
   "main": "index.html",
+  "browserslist": [
+    "last 2 versions",
+    "ie >= 10",
+    "Android >= 4",
+    "iOS >= 7"
+  ],
   "dependencies": {},
   "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.4",
     "pug": "^2.0.4",
-    "sass": "^1.24.2",
-    "typescript": "^3.7.4"
+    "sass": "^1.26.3",
+    "typescript": "^3.8.3"
   },
   "scripts": {
-    "start": "npx parcel src/index.pug --open",
-    "build": "rm -rf docs && npx parcel build src/index.pug --no-source-maps --public-url ./ -d docs"
+    "start": "parcel src/index.pug --open --out-dir .cache",
+    "build": "parcel build src/index.pug --no-source-maps --public-url ./"
   },
   "repository": {
     "type": "git",
