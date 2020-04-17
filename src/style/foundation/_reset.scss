@@ -2,7 +2,12 @@
   margin: 0;
   padding: 0;
 }
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-feature-settings: "palt";
   font-size: 100%;
   font-weight: normal;
@@ -24,7 +29,8 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
-a,button {
+a,
+button {
   cursor: pointer;
   &[disabled] {
     cursor: default;
