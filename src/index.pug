@@ -57,8 +57,8 @@ html(lang="ja")
 
         section.Main__section
           .Input
-            h3.Input__heading 単語を入力（カンマか半角スペースで区切ってください）
-            textarea.Input__textarea#input 中本,和食,イタリアン
+            h3.Input__heading#inputTitle 単語を入力（カンマか半角スペースで区切ってください）
+            textarea.Input__textarea#input(aria-labelledby="inputTitle") 中本,和食,イタリアン
 
             //- label.Amount
               input.Amount__checkbox#amount(type="checkbox", name="amount")
@@ -76,13 +76,16 @@ html(lang="ja")
             .Input__action
               button.Input__button#execute(type="button") ガチャる
               button.Input__button.-juuRen#juuRen(type="button") 10連でガチャる
+              a.VisuallyHidden(href="#output") スロット結果のセクションへ移動する
 
         .Border
 
         section.Main__section
           .Output
-            h3.Output__heading スロット結果
-            .Output__panel#output 中本＿中本＿中本
+            h3.Output__heading#outputTitle スロット結果
+            p.Output__panel#output(aria-labelledby="outputTitle") 中本＿中本＿中本
+            a.VisuallyHidden(href="#execute") もう一度ガチャる
+            a.VisuallyHidden(href="#input") 単語を入力し直す
             p.Output__note 意外と揃わないので、#[sup 2]/#[sub 3]で同じのが出たらラッキーくらいに思うようにすると良いです。揃わなくてもテーブルを叩かないこと。
 
     footer.Footer(role="contentinfo")
