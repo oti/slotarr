@@ -9,16 +9,8 @@
     "Android >= 4",
     "iOS >= 7"
   ],
-  "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.4",
-    "pug": "^2.0.4",
-    "sass": "^1.26.3",
-    "typescript": "^3.8.3"
+    "parcel-bundler": "^1.12.4"
   },
   "scripts": {
     "start": "parcel src/index.pug --open --out-dir .cache",
