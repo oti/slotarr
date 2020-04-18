@@ -1,6 +1,6 @@
 {
   "name": "slotarr",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
   "main": "index.html",
   "browserslist": [
