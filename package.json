@@ -19,7 +19,7 @@
     "url": "git+https://github.com/oti/slotarr.git"
   },
   "author": "oti (https://twitter.com/otiext)",
-  "license": "CC0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/oti/slotarr/issues"
   },
