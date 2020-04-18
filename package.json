@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "start": "parcel src/index.pug --open --out-dir .cache",
-    "build": "parcel build src/index.pug --no-source-maps --public-url ./"
+    "build": "parcel build src/index.pug --no-source-maps --public-url ./",
+    "prettier:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "autoprefixer": "^9.7.6",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^2.0.4",
     "pug": "^2.0.4",
     "sass": "^1.26.3",
     "typescript": "^3.8.3"
