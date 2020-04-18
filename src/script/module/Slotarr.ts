@@ -130,7 +130,7 @@ export default class Slotarr {
         String(i + 1).padStart(2, "0") + ": " + one.join(this.joinString);
 
       if (this.isEqual(one)) {
-        $p.classList.add("u-equal");
+        $p.classList.add("-equal");
       }
 
       this.$output.appendChild($p);
