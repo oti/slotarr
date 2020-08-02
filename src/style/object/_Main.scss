@@ -1,19 +1,11 @@
 .Main {
   @at-root {
-    & {
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-    }
-
     .Main__inner {
       margin-right: auto;
       margin-left: auto;
       padding-right: 1rem;
       padding-left: 1rem;
       max-width: 768px;
-    }
-
-    .Main__section {
     }
 
     .Main__copy {
