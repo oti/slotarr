@@ -8,12 +8,11 @@ html(lang="ja")
     script(src="script/index.ts")
 
   body
-    header.Header(role="banner")
+    .Header
       .Header__inner
         h1.Header__title
           span.VisuallyHidden Slotarr
-          svg.Header__logo#logo(role="img", viewbox="0 0 150 40", width="150", height="40", aria-labelledby="logoTitle")
-            title#logoTitle Slotarrのロゴ
+          svg.Header__logo#logo(role="img", viewbox="0 0 150 40", width="150", height="40", aria-hidden="true")
             path(d="M9.06,3.32c2.81,0,4.49,0.17,5.17,0.61c0.27,0.17,0.32,0.48,0.32,0.74c0,0.43-0.18,0.91-1.13,0.78\
             c-1.41-0.17-2.85-0.26-4.62-0.26c-4.99,0-5.98,2.61-5.98,4.82c0,2.13,1.27,4.39,5.57,7.56c4.94,3.56,6.8,5.47,6.8,9.21\
             c0,4.74-3.49,6.95-9.47,6.95c-1.9,0-4.26-0.17-5.21-0.52C0.14,33.08,0,32.82,0,32.47c0-0.52,0.32-0.96,0.91-0.91\
@@ -42,12 +41,10 @@ html(lang="ja")
             c2.49,0,3.22,0.96,3.22,2.88v34.24c0,1.79-0.73,2.88-3.22,2.88h-4.26c-0.68,0-0.86-0.22-0.86-0.83c0-0.74,0.18-0.92,0.86-0.92\
             H146.19z")
 
-
-
     main.Main(role="main")
-      article.Main__inner
-        header.Main__section
-          h2.Main__copy 好きな単語をスロット！
+      .Main__inner
+        section.Main__section
+          h1.Main__copy 好きな単語をスロット！
           p.Main__description ランチが決まらない……そんな時はSlotarrにお任せ。
           p.Main__description カンマ区切り（半角スペースも可）で項目を入力して「ガチャる」ボタンをタップ！
           p.Main__description 揃ったお店で美味しく食べましょう。選択肢はいくつでもOKです！
@@ -56,7 +53,7 @@ html(lang="ja")
 
         section.Main__section
           .Input
-            h3.Input__heading#inputTitle 単語を入力（カンマか半角スペースで区切ってください）
+            h2.Input__heading#inputTitle 単語を入力（カンマか半角スペースで区切ってください）
             textarea.Input__textarea#input(aria-labelledby="inputTitle") 中本,和食,イタリアン
 
             //- label.Amount
@@ -81,8 +78,8 @@ html(lang="ja")
 
         section.Main__section
           .Output
-            h3.Output__heading#outputTitle スロット結果
-            p.Output__panel#output(aria-labelledby="outputTitle") 中本＿中本＿中本
+            h2.Output__heading#outputTitle スロット結果
+            .Output__panel#output(aria-labelledby="outputTitle") 中本＿中本＿中本
             a.VisuallyHidden(href="#execute") もう一度ガチャる
             a.VisuallyHidden(href="#input") 単語を入力し直す
             p.Output__note 意外と揃わないので、#[sup 2]/#[sub 3]で同じのが出たらラッキーくらいに思うようにすると良いです。揃わなくてもテーブルを叩かないこと。
