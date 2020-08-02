@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/oti/slotarr#readme",
   "dependencies": {
-    "core-js": "^3.6.5"
+    "core-js": "^3.6.5",
+    "what-input": "^5.2.10"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.6",
