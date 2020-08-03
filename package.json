@@ -3,12 +3,6 @@
   "version": "2.2.3",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
   "main": "index.html",
-  "browserslist": [
-    "last 2 versions",
-    "ie > 9",
-    "Android > 3",
-    "iOS > 6"
-  ],
   "scripts": {
     "start": "parcel src/index.pug --open --out-dir .cache",
     "build": "parcel build src/index.pug --no-source-maps --public-url ./",
