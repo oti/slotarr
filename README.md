@@ -1,38 +1,14 @@
-# Slotarr v2
+# スロッター
 
-https://slotarr.dskd.jp/
+![カバー画像](src/image/og-image.png)
 
-半角スペース区切りの単語をスロットするだけのウェブアプリ。
-
-お店が決められない時に便利です。
-
+https://slotarr.dskd.jp/  
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a9b47b26-362d-47ca-a0bf-4230ea039ad9/deploy-status)](https://app.netlify.com/sites/slotarr/deploys)
 
-## 名前の由来
+半角スペース区切りの単語をスロットするだけのウェブアプリ。3 つ揃うとテキストに色がつきます。
 
-文字列を配列にしてスロットするので、slot array で「Slotarr」です。スロッターと読みます。
-
-## 開発
-
-Parcel を使ってバンドルしています。
-
-`git clone`したらプロジェクトルートに移動。
-
-```
-npm ci
-npm start
-```
-
-`localhost:1234`がブラウザで開きます。
-
-## ビルド
-
-```
-npm run build
-```
-
-`dist/`にファイルが出力されます。
+行きたいお店が決められない時に便利です。
 
 ## ライセンス
 
-MIT.
+Copyright (c) oti. Under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.ja).
