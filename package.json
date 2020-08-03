@@ -14,12 +14,30 @@
     "what-input": "^5.2.10"
   },
   "devDependencies": {
+    "@prettier/plugin-pug": "^1.5.0",
     "autoprefixer": "^9.8.6",
-    "babel-preset-env": "^1.7.0",
+    "commitizen": "^4.1.2",
+    "cz-customizable": "^6.2.0",
+    "husky": "^4.2.5",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
     "pug": "^2.0.4",
     "sass": "^1.26.10",
     "typescript": "^3.9.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }
