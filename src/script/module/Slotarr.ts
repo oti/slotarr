@@ -9,7 +9,6 @@ export default class Slotarr {
   $input: HTMLTextAreaElement;
   $output: HTMLDivElement;
   $execute: HTMLButtonElement;
-  defaultSlotAmount: number;
   $multiple: HTMLButtonElement;
   multipleAmount: number;
   splitString: string;
@@ -23,7 +22,6 @@ export default class Slotarr {
     this.$input = document.querySelector("#input") as HTMLTextAreaElement;
     this.$output = document.querySelector("#output") as HTMLDivElement;
     this.$execute = document.querySelector("#execute") as HTMLButtonElement;
-    this.defaultSlotAmount = 3;
     this.$multiple = document.querySelector("#multiple") as HTMLButtonElement;
     this.multipleAmount = 10;
     this.splitString = dict.split_string[0];
@@ -55,7 +53,6 @@ export default class Slotarr {
    * スロットの数を返す
    */
   get slotAmount() {
-    // return this.isSameAmountOfItemToSlot ? this.seedArray.length : this.defaultSlotAmount
     return this.seedArray.length;
   }
 
