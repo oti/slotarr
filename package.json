@@ -2,12 +2,12 @@
   "name": "slotarr",
   "version": "2.2.3",
   "description": "好きな文字列でスロット！揃ったらラッキー！",
+  "author": "oti",
   "scripts": {
     "start": "parcel src/index.pug --open --out-dir .cache",
     "build": "parcel build src/index.pug --no-source-maps --public-url ./",
     "prettier:fix": "prettier --write ."
   },
-  "author": "oti (https://twitter.com/otiext)",
   "license": "MIT",
   "dependencies": {
     "core-js": "^3.6.5",
