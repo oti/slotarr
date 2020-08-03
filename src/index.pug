@@ -59,10 +59,10 @@ html(lang="ja")
             c1.5,0,1.72-0.48,1.72-2.31V3.32c0-1.27-0.23-1.57-1.72-1.57h-3.67c-0.68,0-0.86-0.22-0.86-0.83c0-0.74,0.18-0.92,0.86-0.92h4.26\
             c2.49,0,3.22,0.96,3.22,2.88v34.24c0,1.79-0.73,2.88-3.22,2.88h-4.26c-0.68,0-0.86-0.22-0.86-0.83c0-0.74,0.18-0.92,0.86-0.92 H146.19z")
 
-    main.Main(role="main")
+    main.Main
       .Main__inner
-        section.Main__section
-          h1.Main__copy 好きな単語をスロット！
+        .Main__section
+          p.Main__copy 好きな単語をスロット！
           p.Main__description ランチが決まらない……そんな時はSlotarrにお任せ。
           p.Main__description カンマ区切り（半角スペースも可）で項目を入力して「ガチャる」ボタンをタップ！
           p.Main__description 揃ったお店で美味しく食べましょう。選択肢はいくつでもOKです！
@@ -102,7 +102,7 @@ html(lang="ja")
             a.VisuallyHidden(href="#input") 単語を入力し直す
             p.Output__note 意外と揃わないので、#[sup 2]/#[sub 3]で同じのが出たらラッキーくらいに思うようにすると良いです。揃わなくてもテーブルを叩かないこと。
 
-    footer.Footer(role="contentinfo")
+    footer.Footer
       address.Footer__inner
         p.Footer__credit このウェブアプリは#[a(href="https://twitter.com/otiext", target="_blank", rel="noopener") 越智]が作りました。
         p.Footer__license #[a(href="https://github.com/oti/slotarr") GitHub], MIT license.
