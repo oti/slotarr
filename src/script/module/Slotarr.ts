@@ -9,8 +9,9 @@ export default class Slotarr {
   $input: HTMLTextAreaElement;
   $output: HTMLDivElement;
   $execute: HTMLButtonElement;
-  $juuRen: HTMLButtonElement;
   defaultSlotAmount: number;
+  $multiple: HTMLButtonElement;
+  multipleAmount: number;
   splitString: string;
   joinString: string;
 
@@ -22,8 +23,9 @@ export default class Slotarr {
     this.$input = document.querySelector("#input") as HTMLTextAreaElement;
     this.$output = document.querySelector("#output") as HTMLDivElement;
     this.$execute = document.querySelector("#execute") as HTMLButtonElement;
-    this.$juuRen = document.querySelector("#juuRen") as HTMLButtonElement;
     this.defaultSlotAmount = 3;
+    this.$multiple = document.querySelector("#multiple") as HTMLButtonElement;
+    this.multipleAmount = 10;
     this.splitString = dict.split_string[0];
     this.joinString = dict.join_string;
   }
@@ -85,20 +87,20 @@ export default class Slotarr {
   }
 
   /**
-   * seedArrayで返ってくる配列を元にスロットの数だけランダムに抽出した配列を10個入った二次元配列を返す
+   * seedArrayで返ってくる配列を元にスロットの数だけランダムに抽出した配列を n 個入った二次元配列を返す
    */
-  get shuffled10Array() {
-    let array10: string[][] = [];
+  get shuffledMultipleArray() {
+    let multiArray: string[][] = [];
 
-    for (let i = 0; i < 10; i++) {
-      let array1: string[] = [];
+    for (let i = 0; i < this.multipleAmount; i++) {
+      let array: string[] = [];
       for (let i = 0; i < this.slotAmount; i++) {
-        array1.push(this.seedArray[this.idx]);
+        array.push(this.seedArray[this.idx]);
       }
-      array10.push(array1);
+      multiArray.push(array);
     }
 
-    return array10;
+    return multiArray;
   }
 
   /**
@@ -123,7 +125,7 @@ export default class Slotarr {
   /**
    * シャッフル結果を文字列にしてテキストノードに挿入する
    */
-  setJuuRenResult(result: string[][]) {
+  setMultipleResult(result: string[][]) {
     result.forEach((one: string[], i: number, arr: string[][]) => {
       let $p: HTMLParagraphElement = document.createElement("p");
       $p.textContent =
@@ -145,9 +147,9 @@ export default class Slotarr {
       this.setResult(this.shuffledArray);
     });
 
-    this.$juuRen.addEventListener("click", (ev: Event) => {
+    this.$multiple.addEventListener("click", (ev: Event) => {
       this.$output.textContent = "";
-      this.setJuuRenResult(this.shuffled10Array);
+      this.setMultipleResult(this.shuffledMultipleArray);
     });
   }
 }
