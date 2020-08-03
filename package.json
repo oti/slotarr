@@ -29,12 +29,12 @@
     "what-input": "^5.2.10"
   },
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "^9.8.6",
     "babel-preset-env": "^1.7.0",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.4",
+    "prettier": "^2.0.5",
     "pug": "^2.0.4",
-    "sass": "^1.26.3",
-    "typescript": "^3.8.3"
+    "sass": "^1.26.10",
+    "typescript": "^3.9.7"
   }
 }
