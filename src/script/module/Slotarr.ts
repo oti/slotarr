@@ -23,7 +23,7 @@ export default class Slotarr {
     this.$output = document.querySelector("#output") as HTMLDivElement;
     this.$execute = document.querySelector("#execute") as HTMLButtonElement;
     this.$multiple = document.querySelector("#multiple") as HTMLButtonElement;
-    this.multipleAmount = 10;
+    this.multipleAmount = 100;
     this.splitString = dict.split_string[0];
     this.joinString = dict.join_string;
   }
