@@ -7,7 +7,8 @@ export default class Slotarr {
   $amount: HTMLInputElement;
   $separaters: NodeListOf<HTMLInputElement>;
   $input: HTMLTextAreaElement;
-  $output: HTMLDivElement;
+  $outputDetail: HTMLDivElement;
+  $outputSummary: HTMLDivElement;
   $execute: HTMLButtonElement;
   $multiple: HTMLButtonElement;
   multipleAmount: number;
@@ -20,7 +21,12 @@ export default class Slotarr {
       '[name="separater"]'
     ) as NodeListOf<HTMLInputElement>;
     this.$input = document.querySelector("#input") as HTMLTextAreaElement;
-    this.$output = document.querySelector("#output") as HTMLDivElement;
+    this.$outputDetail = document.querySelector(
+      "#outputDetail"
+    ) as HTMLDivElement;
+    this.$outputSummary = document.querySelector(
+      "#outputSummary"
+    ) as HTMLDivElement;
     this.$execute = document.querySelector("#execute") as HTMLButtonElement;
     this.$multiple = document.querySelector("#multiple") as HTMLButtonElement;
     this.multipleAmount = 100;
@@ -113,26 +119,62 @@ export default class Slotarr {
   }
 
   /**
+   * 結果表示を初期化する
+   */
+  resetResult() {
+    this.$outputSummary.textContent = "";
+    this.$outputDetail.textContent = "";
+  }
+
+  /**
    * シャッフル結果を文字列にしてテキストノードに挿入する
    */
   setResult(result: string[]) {
-    this.$output.textContent = result.join(this.joinString);
+    this.$outputDetail.textContent = result.join(this.joinString);
   }
 
   /**
    * シャッフル結果を文字列にしてテキストノードに挿入する
    */
   setMultipleResult(result: string[][]) {
-    result.forEach((one: string[], i: number, arr: string[][]) => {
-      let $p: HTMLParagraphElement = document.createElement("p");
-      $p.textContent =
-        String(i + 1).padStart(2, "0") + ": " + one.join(this.joinString);
+    const formattedResult = result.map((one) => ({
+      text: one.join(this.joinString),
+      isEqual: this.isEqual(one),
+    }));
 
-      if (this.isEqual(one)) {
-        $p.classList.add("-equal");
+    const summary = formattedResult
+      .filter((one) => one.isEqual)
+      .reduce((memo, item) => {
+        const summaryText = item.text.split(this.joinString)[0];
+        const idx = memo.findIndex(({ text }) => text === summaryText);
+        if (idx < 0) {
+          memo.push({
+            text: summaryText,
+            count: 1,
+          });
+        } else {
+          memo.splice(idx, 1, {
+            text: memo[idx].text,
+            count: memo[idx].count += 1,
+          });
+        }
+        return memo;
+      }, [])
+      .sort((a, b) => b.count - a.count);
+
+    formattedResult.forEach(
+      (one: { text: string; isEqual: boolean }, i: number) => {
+        const $p = document.createElement("p");
+        $p.textContent = String(i + 1).padStart(2, "0") + ": " + one.text;
+        $p.classList.toggle("-equal", one.isEqual);
+        this.$outputDetail.appendChild($p);
       }
+    );
 
-      this.$output.appendChild($p);
+    summary.forEach((one: { text: string; count: number }) => {
+      const $p = document.createElement("p");
+      $p.textContent = one.text + ": " + one.count + "回";
+      this.$outputSummary.appendChild($p);
     });
   }
 
@@ -141,11 +183,12 @@ export default class Slotarr {
    */
   dispatch() {
     this.$execute.addEventListener("click", (ev: Event) => {
+      this.resetResult();
       this.setResult(this.shuffledArray);
     });
 
     this.$multiple.addEventListener("click", (ev: Event) => {
-      this.$output.textContent = "";
+      this.resetResult();
       this.setMultipleResult(this.shuffledMultipleArray);
     });
   }
