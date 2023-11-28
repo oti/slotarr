@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "class-naming": "/^[A-Z]|-/"
+  }
+}

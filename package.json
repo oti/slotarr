@@ -1,43 +1,17 @@
 {
+  "private": true,
   "name": "slotarr",
   "version": "2.3.0",
-  "description": "好きな文字列でスロット！揃ったらラッキー！",
-  "author": "oti",
-  "license": "CC BY-NC 4.0",
   "scripts": {
-    "start": "parcel src/index.pug --open --out-dir .cache",
-    "build": "parcel build src/index.pug --no-source-maps --public-url ./",
-    "prettier:fix": "prettier --write ."
-  },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "what-input": "^5.2.10"
+    "lint:html": "markuplint 'docs/**/*.html'",
+    "lint:css": "stylelint 'docs/**/*.css'",
+    "start": "cd docs && python3 -m http.server 3000",
+    "test": "npm run lint:css && npm run lint:html",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@prettier/plugin-pug": "^1.5.0",
-    "autoprefixer": "^9.8.6",
-    "commitizen": "^4.3.0",
-    "cz-customizable": "^6.2.0",
-    "husky": "^4.2.5",
-    "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1",
-    "pug": "^3.0.1",
-    "sass": "^1.26.10",
-    "typescript": "^3.9.7"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./.cz-config.js"
-    }
+    "husky": "^8.0.3",
+    "markuplint": "^3.14.0",
+    "stylelint": "^15.11.0"
   }
 }
