@@ -22,7 +22,10 @@
     <link rel="canonical" href="https://oti.github.io/slotarr/" />
     <script type="module">
       import Slotarr from "./slotarr.mjs";
-      document.addEventListener("DOMContentLoaded", () => new Slotarr());
+      document.addEventListener(
+        "DOMContentLoaded",
+        () => new Slotarr(document.querySelector(".Main"))
+      );
     </script>
   </head>
   <body>
@@ -69,6 +72,7 @@
         </h1>
       </div>
     </div>
+
     <main class="Main">
       <div class="Main__inner">
         <div class="Main__section">

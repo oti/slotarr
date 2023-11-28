@@ -1,12 +1,13 @@
 export default class Slotarr {
-  constructor() {
-    this.$amount = document.querySelector("#amount");
-    this.$separaters = document.querySelectorAll('[name="separater"]');
-    this.$input = document.querySelector("#input");
-    this.$outputDetail = document.querySelector("#outputDetail");
-    this.$outputSummary = document.querySelector("#outputSummary");
-    this.$execute = document.querySelector("#execute");
-    this.$multiple = document.querySelector("#multiple");
+  constructor($Main) {
+    if (!$Main) return;
+    this.$amount = $Main.querySelector("#amount");
+    this.$separaters = $Main.querySelectorAll('[name="separater"]');
+    this.$input = $Main.querySelector("#input");
+    this.$outputDetail = $Main.querySelector("#outputDetail");
+    this.$outputSummary = $Main.querySelector("#outputSummary");
+    this.$execute = $Main.querySelector("#execute");
+    this.$multiple = $Main.querySelector("#multiple");
     this.multipleAmount = 100;
     this.dict = {
       split_string: [",", " "],
