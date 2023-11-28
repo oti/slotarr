@@ -1,8 +1,3 @@
-const dict = {
-  split_string: [",", " "],
-  join_string: "＿",
-};
-
 export default class Slotarr {
   constructor() {
     this.$amount = document.querySelector("#amount");
@@ -13,8 +8,14 @@ export default class Slotarr {
     this.$execute = document.querySelector("#execute");
     this.$multiple = document.querySelector("#multiple");
     this.multipleAmount = 100;
-    this.splitString = dict.split_string[0];
-    this.joinString = dict.join_string;
+    this.dict = {
+      split_string: [",", " "],
+      join_string: "＿",
+    };
+    this.splitString = this.dict.split_string[0];
+    this.joinString = this.dict.join_string;
+
+    this.attachEvent();
   }
 
   /**
@@ -56,7 +57,7 @@ export default class Slotarr {
    * $inputのテキストから元となる配列を返す
    */
   get seedArray() {
-    return this.$input.value.split(dict.split_string[this.separater]);
+    return this.$input.value.split(this.dict.split_string[this.separater]);
   }
 
   /**
@@ -87,6 +88,21 @@ export default class Slotarr {
     }
 
     return multiArray;
+  }
+
+  /**
+   * イベントのバインド
+   */
+  attachEvent() {
+    this.$execute.addEventListener("click", () => {
+      this.resetResult();
+      this.setResult(this.shuffledArray);
+    });
+
+    this.$multiple.addEventListener("click", () => {
+      this.resetResult();
+      this.setMultipleResult(this.shuffledMultipleArray);
+    });
   }
 
   /**
@@ -138,41 +154,24 @@ export default class Slotarr {
         } else {
           memo.splice(idx, 1, {
             text: memo[idx].text,
-            count: memo[idx].count += 1,
+            count: (memo[idx].count += 1),
           });
         }
         return memo;
       }, [])
       .sort((a, b) => b.count - a.count);
 
-    formattedResult.forEach(
-      (one, i) => {
-        const $p = document.createElement("p");
-        $p.textContent = String(i + 1).padStart(2, "0") + ": " + one.text;
-        $p.classList.toggle("-equal", one.isEqual);
-        this.$outputDetail.appendChild($p);
-      }
-    );
+    formattedResult.forEach((one, i) => {
+      const $p = document.createElement("p");
+      $p.textContent = String(i + 1).padStart(2, "0") + ": " + one.text;
+      $p.classList.toggle("-equal", one.isEqual);
+      this.$outputDetail.appendChild($p);
+    });
 
     summary.forEach((one) => {
       const $p = document.createElement("p");
       $p.textContent = one.text + ": " + one.count + "回";
       this.$outputSummary.appendChild($p);
-    });
-  }
-
-  /**
-   * イベントのバインド
-   */
-  dispatch() {
-    this.$execute.addEventListener("click", () => {
-      this.resetResult();
-      this.setResult(this.shuffledArray);
-    });
-
-    this.$multiple.addEventListener("click", () => {
-      this.resetResult();
-      this.setMultipleResult(this.shuffledMultipleArray);
     });
   }
 }
