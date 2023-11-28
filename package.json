@@ -16,7 +16,7 @@
   "devDependencies": {
     "@prettier/plugin-pug": "^1.5.0",
     "autoprefixer": "^9.8.6",
-    "commitizen": "^4.1.2",
+    "commitizen": "^4.3.0",
     "cz-customizable": "^6.2.0",
     "husky": "^4.2.5",
     "parcel-bundler": "^1.12.4",
