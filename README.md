@@ -1,6 +1,6 @@
 # スロッター
 
-![カバー画像](src/image/og-image.png)
+![カバー画像](docs/og-image.png)
 
 https://oti.github.io/slotarr/
 
