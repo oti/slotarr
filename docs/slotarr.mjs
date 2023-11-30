@@ -1,20 +1,14 @@
 export default class Slotarr {
   constructor($Main) {
     if (!$Main) return;
-    this.$amount = $Main.querySelector("#amount");
-    this.$separaters = $Main.querySelectorAll('[name="separater"]');
-    this.$input = $Main.querySelector("#input");
-    this.$outputDetail = $Main.querySelector("#outputDetail");
-    this.$outputSummary = $Main.querySelector("#outputSummary");
-    this.$execute = $Main.querySelector("#execute");
-    this.$multiple = $Main.querySelector("#multiple");
-    this.multipleAmount = 100;
-    this.dict = {
-      split_string: [",", " "],
-      join_string: "＿",
-    };
-    this.splitString = this.dict.split_string[0];
-    this.joinString = this.dict.join_string;
+    this.$Separaters = $Main.querySelectorAll('[name="separater"]');
+    this.$Input = $Main.querySelector("#input");
+    this.$Result = $Main.querySelector("#outputDetail");
+    this.$Summary = $Main.querySelector("#outputSummary");
+    this.$Buttons = $Main.querySelectorAll(".Input__button");
+    this.joinString = "＿";
+    this.arrangedClassname = "-arranged";
+    this.firstClassname = "-first";
 
     this.attachEvent();
   }
