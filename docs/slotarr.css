@@ -199,7 +199,8 @@ body {
   font-size: 1.25rem;
 }
 
-.Output__panel .-equal {
+.Output__panel .-arranged,
+.Output__panel .-first {
   color: #936;
   font-weight: 700;
 }
