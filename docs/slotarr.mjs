@@ -2,10 +2,10 @@ export default class Slotarr {
   constructor($Main) {
     if (!$Main) return;
     this.$Separaters = $Main.querySelectorAll('[name="separater"]');
-    this.$Input = $Main.querySelector("#input");
-    this.$Result = $Main.querySelector("#outputDetail");
-    this.$Summary = $Main.querySelector("#outputSummary");
-    this.$Buttons = $Main.querySelectorAll(".Input__button");
+    this.$Input = $Main.querySelector("#Input");
+    this.$Result = $Main.querySelector("#Detail");
+    this.$Summary = $Main.querySelector("#Summary");
+    this.$Buttons = $Main.querySelectorAll(".Button");
     this.joinString = "＿";
     this.arrangedClassname = "-arranged";
     this.firstClassname = "-first";
@@ -46,8 +46,8 @@ export default class Slotarr {
 
   attachEvent() {
     this.$Buttons.forEach(
-      ($button) =>
-        $button.addEventListener("click", ({ target: { id } }) =>
+      ($b) =>
+        $b.addEventListener("click", ({ target: { id } }) =>
           this.handleClickButton(id)
         ),
       false
