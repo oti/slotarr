@@ -40,7 +40,7 @@ export default class Slotarr {
   }
 
   // shuffled[] を 100 個もつ二次元配列を返す
-  get shuffled100() {
+  get multipleShuffled() {
     return Array.from({ length: 100 }, () => this.shuffled);
   }
 
@@ -75,15 +75,15 @@ export default class Slotarr {
       this.$Result.appendChild($p);
     } else {
       // 2 回参照したいのでキャッシュする
-      const shuffled100 = [...this.shuffled100];
+      const multipleShuffled = [...this.multipleShuffled];
 
       // seed をシャッフルして繋いだ文字列を 100 個の p 要素にして配置する
-      shuffled100
+      multipleShuffled
         .map((shuffled) => this.createShuffledText(shuffled))
         .forEach(($p) => this.$Result.appendChild($p));
 
       // seed をシャッフルして繋いだ文字列から、揃っているものだけを抽出する
-      const arranged = shuffled100.filter(({ isArranged }) => isArranged);
+      const arranged = multipleShuffled.filter(({ isArranged }) => isArranged);
       // seed の文字列ごとに揃った数を追加する
       this.seed
         .map((string) => ({
