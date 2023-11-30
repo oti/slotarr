@@ -13,160 +13,104 @@ export default class Slotarr {
     this.attachEvent();
   }
 
-  /**
-   * 項目の数とスロットの数が同じがどうかを返す
-   */
-  get isSameAmountOfItemToSlot() {
-    return this.$amount.checked;
+  get separateString() {
+    // radio の選択されている方の value 値を返す
+    return [...this.$Separaters].find(({ checked }) => checked).value;
   }
 
-  /**
-   * @get 区切り文字を返す
-   */
-  get separater() {
-    let value = 0;
-    this.$separaters.forEach((elem) => {
-      if (elem.checked) {
-        value = parseInt(elem.value, 10);
-        return;
-      }
-    });
-    return value;
+  get randomly() {
+    return Math.floor(Math.random() * this.seed.length);
   }
 
-  /**
-   * スロットの数を返す
-   */
-  get slotAmount() {
-    return this.seedArray.length;
+  // 区切り文字で分割した配列を返す
+  get seed() {
+    return this.$Input.value.split(this.separateString);
   }
 
-  /**
-   * slotAmount-1 を Max とする正の整数を返す
-   */
-  get idx() {
-    return Math.floor(Math.random() * this.slotAmount);
+  // seed　の中身をランダムに入れ替えた配列と、その配列の中身が全て揃っているか否かを示したオブジェクトを返す
+  get shuffled() {
+    const array = Array.from(
+      { length: this.seed.length },
+      () => this.seed[this.randomly]
+    );
+    return {
+      array,
+      isArranged: array.every((item) => item === array[0]),
+    };
   }
 
-  /**
-   * $inputのテキストから元となる配列を返す
-   */
-  get seedArray() {
-    return this.$input.value.split(this.dict.split_string[this.separater]);
+  // shuffled[] を 100 個もつ二次元配列を返す
+  get shuffled100() {
+    return Array.from({ length: 100 }, () => this.shuffled);
   }
 
-  /**
-   * seedArrayで返ってくる配列を元にスロットの数だけランダムに抽出した配列を返す
-   */
-  get shuffledArray() {
-    let array = [];
-
-    for (let i = 0; i < this.slotAmount; i++) {
-      array.push(this.seedArray[this.idx]);
-    }
-
-    return array;
-  }
-
-  /**
-   * seedArrayで返ってくる配列を元にスロットの数だけランダムに抽出した配列を n 個入った二次元配列を返す
-   */
-  get shuffledMultipleArray() {
-    let multiArray = [];
-
-    for (let i = 0; i < this.multipleAmount; i++) {
-      let array = [];
-      for (let i = 0; i < this.slotAmount; i++) {
-        array.push(this.seedArray[this.idx]);
-      }
-      multiArray.push(array);
-    }
-
-    return multiArray;
-  }
-
-  /**
-   * イベントのバインド
-   */
   attachEvent() {
-    this.$execute.addEventListener("click", () => {
-      this.resetResult();
-      this.setResult(this.shuffledArray);
-    });
-
-    this.$multiple.addEventListener("click", () => {
-      this.resetResult();
-      this.setMultipleResult(this.shuffledMultipleArray);
-    });
+    this.$Buttons.forEach(
+      ($button) =>
+        $button.addEventListener("click", ({ target: { id } }) =>
+          this.handleClickButton(id)
+        ),
+      false
+    );
   }
 
-  /**
-   * 引数に渡した配列の中身が全て同じかどうか返す
-   */
-  isEqual(target) {
-    for (let i = 0; i < this.slotAmount; i++) {
-      if (target[0] !== target[i]) {
-        return false;
-      }
+  handleClickButton(id) {
+    this.initializeResult();
+    this.updateResult(id);
+  }
+
+  initializeResult() {
+    const { $Result, $Summary } = this;
+    while ($Summary.firstChild) {
+      $Summary.removeChild($Summary.firstChild);
     }
-    return true;
+    while ($Result.firstChild) {
+      $Result.removeChild($Result.firstChild);
+    }
   }
 
-  /**
-   * 結果表示を初期化する
-   */
-  resetResult() {
-    this.$outputSummary.textContent = "";
-    this.$outputDetail.textContent = "";
+  updateResult(id) {
+    if (id === "once") {
+      const $p = this.createShuffledText(this.shuffled);
+      this.$Result.appendChild($p);
+    } else {
+      // 2 回参照したいのでキャッシュする
+      const shuffled100 = [...this.shuffled100];
+
+      // seed をシャッフルして繋いだ文字列を 100 個の p 要素にして配置する
+      shuffled100
+        .map((shuffled) => this.createShuffledText(shuffled))
+        .forEach(($p) => this.$Result.appendChild($p));
+
+      // seed をシャッフルして繋いだ文字列から、揃っているものだけを抽出する
+      const arranged = shuffled100.filter(({ isArranged }) => isArranged);
+      // seed の文字列ごとに揃った数を追加する
+      this.seed
+        .map((string) => ({
+          string,
+          length: arranged.filter(({ array }) => array[0] === string).length,
+        }))
+        // 降順にソートする
+        .sort((a, b) => b.length - a.length)
+        // p 要素を作って配置する
+        .map((v, i) => this.createSummaryText({ ...v, i }))
+        .forEach(($p) => this.$Summary.appendChild($p));
+    }
   }
 
-  /**
-   * シャッフル結果を文字列にしてテキストノードに挿入する
-   */
-  setResult(result) {
-    this.$outputDetail.textContent = result.join(this.joinString);
+  // <p class="-arranged?">◯_×_△</p> を作って返す
+  createShuffledText({ array, isArranged }) {
+    const $p = document.createElement("p");
+    $p.textContent = array.join(this.joinString);
+    $p.classList.toggle(this.arrangedClassname, isArranged);
+    return $p;
   }
 
-  /**
-   * シャッフル結果を文字列にしてテキストノードに挿入する
-   */
-  setMultipleResult(result) {
-    const formattedResult = result.map((one) => ({
-      text: one.join(this.joinString),
-      isEqual: this.isEqual(one),
-    }));
-
-    const summary = formattedResult
-      .filter((one) => one.isEqual)
-      .reduce((memo, item) => {
-        const summaryText = item.text.split(this.joinString)[0];
-        const idx = memo.findIndex(({ text }) => text === summaryText);
-        if (idx < 0) {
-          memo.push({
-            text: summaryText,
-            count: 1,
-          });
-        } else {
-          memo.splice(idx, 1, {
-            text: memo[idx].text,
-            count: (memo[idx].count += 1),
-          });
-        }
-        return memo;
-      }, [])
-      .sort((a, b) => b.count - a.count);
-
-    formattedResult.forEach((one, i) => {
-      const $p = document.createElement("p");
-      $p.textContent = String(i + 1).padStart(2, "0") + ": " + one.text;
-      $p.classList.toggle("-equal", one.isEqual);
-      this.$outputDetail.appendChild($p);
-    });
-
-    summary.forEach((one) => {
-      const $p = document.createElement("p");
-      $p.textContent = one.text + ": " + one.count + "回";
-      this.$outputSummary.appendChild($p);
-    });
+  // <p>◯: n回</p> を作って返す
+  createSummaryText({ string, length, i }) {
+    const $p = document.createElement("p");
+    $p.textContent = `${string}: ${length}回`;
+    $p.classList.toggle(this.firstClassname, i === 0);
+    return $p;
   }
 }
