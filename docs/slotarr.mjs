@@ -70,7 +70,10 @@ export default class Slotarr {
   }
 
   updateResult(id) {
-    if (id === "once") {
+    const isOnce = id === "Once";
+    this.$Summary.toggleAttribute("hidden", isOnce);
+
+    if (isOnce) {
       const $p = this.createShuffledText(this.shuffled);
       this.$Result.appendChild($p);
     } else {
