@@ -110,7 +110,7 @@ export default class Slotarr {
   createSummaryText({ string, length, i }) {
     const $p = document.createElement("p");
     $p.textContent = `${string}: ${length}回`;
-    $p.classList.toggle(this.firstClassname, i === 0);
+    $p.classList.toggle(this.firstClassname, i === 0 && length > 0);
     return $p;
   }
 }
