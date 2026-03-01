@@ -31,7 +31,7 @@ export default class Slotarr {
   get shuffled() {
     const array = Array.from(
       { length: this.seed.length },
-      () => this.seed[this.randomly]
+      () => this.seed[this.randomly],
     );
     return {
       array,
@@ -48,9 +48,9 @@ export default class Slotarr {
     this.$Buttons.forEach(
       ($b) =>
         $b.addEventListener("click", ({ target: { id } }) =>
-          this.handleClickButton(id)
+          this.handleClickButton(id),
         ),
-      false
+      false,
     );
   }
 
