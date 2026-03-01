@@ -3,15 +3,9 @@
   "name": "slotarr",
   "version": "3.1.0",
   "scripts": {
-    "lint:html": "markuplint 'docs/**/*.html'",
-    "lint:css": "stylelint 'docs/**/*.css'",
+    "lint:html": "npx markuplint 'docs/**/*.html'",
+    "lint:css": "npx stylelint 'docs/**/*.css'",
     "start": "cd docs && python3 -m http.server 3000",
-    "test": "npm run lint:css && npm run lint:html",
-    "prepare": "husky install"
-  },
-  "devDependencies": {
-    "husky": "^8.0.3",
-    "markuplint": "^3.14.0",
-    "stylelint": "^15.11.0"
+    "test": "npm run lint:css && npm run lint:html"
   }
 }
