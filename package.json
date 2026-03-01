@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "slotarr",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "scripts": {
     "lint:html": "npx markuplint 'docs/**/*.html'",
     "lint:css": "npx stylelint 'docs/**/*.css'",
